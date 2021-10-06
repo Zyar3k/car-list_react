@@ -1,4 +1,5 @@
 import { useState } from "react";
+import uuid from "react-uuid";
 import "./App.scss";
 
 import DBJSON from "./db.json";
@@ -8,13 +9,19 @@ function App() {
   const [cars, setCars] = useState(DBJSON);
   const [searchTerm, setSearchTerm] = useState("");
 
+  const deleteCar = (e) => {
+    const id = e.target.parentNode.parentNode.parentNode.id;
+    const array = cars.filter((car) => car.id !== id);
+    setCars(array);
+  };
+
   return (
     <div className="App">
       <header>
         <section>
           <input
             type="text"
-            placeholder="search"
+            placeholder="Search car..."
             onChange={(e) => {
               setSearchTerm(e.target.value);
             }}
@@ -72,7 +79,7 @@ function App() {
                   }
                 })
                 .map((car, index) => (
-                  <tr key={index}>
+                  <tr key={index} id={car.id}>
                     <th>{index + 1}</th>
                     <td>{car.brand}</td>
                     <td>{car.model}</td>
@@ -82,7 +89,7 @@ function App() {
                         <button onClick={() => setIsEditable(true)}>
                           EDIT
                         </button>
-                        <button>DELETE</button>
+                        <button onClick={deleteCar}>DELETE</button>
                       </span>
                     </td>
                   </tr>

@@ -1,240 +1,72 @@
 [
   {
-    "id": 18,
+    "id": "18",
     "brand": "Fiat",
     "model": "2/2B",
     "year": "1910"
   },
   {
-    "id": 22,
+    "id": "22",
     "brand": "Audi",
     "model": "Type C",
     "year": "1912"
   },
   {
-    "id": 23,
+    "id": "23",
     "brand": "Chevrolet",
     "model": "Classic Six",
     "year": "1910"
   },
   {
-    "id": 44,
+    "id": "44",
     "brand": "Essex",
     "model": "Essex A",
     "year": "1919"
   },
   {
-    "id": 5,
+    "id": "5",
     "brand": "Hispano-Suiza",
     "model": "H6",
     "year": "1919"
   },
   {
-    "id": 64,
+    "id": "64",
     "brand": "Lancia",
     "model": "Tipo 55 Corsa",
     "year": "1908"
   },
   {
-    "id": 7,
+    "id": "7",
     "brand": "Morris",
     "model": "Oxford",
     "year": "1913"
   },
   {
-    "id": 8,
+    "id": "8",
     "brand": "Opel",
     "model": "Rennwagen",
     "year": "1913"
   },
   {
-    "id": 92,
+    "id": "92",
     "brand": "Peugeot",
     "model": "Type 126",
     "year": "1910"
   },
   {
-    "id": 140,
+    "id": "140",
     "brand": "Rolls-Royce",
     "model": "Silver Ghost",
     "year": "1906"
   },
   {
-    "id": 121,
+    "id": "121",
     "brand": "Vauxhall",
     "model": "Prince Henry",
     "year": "1911"
   },
   {
-    "id": 112,
-    "brand": "Woods",
-    "model": "Dual Power",
-    "year": "1917"
-  },
-  {
-    "id": 64,
-    "brand": "Lancia",
-    "model": "Tipo 55 Corsa",
-    "year": "1908"
-  },
-  {
-    "id": 7,
-    "brand": "Morris",
-    "model": "Oxford",
-    "year": "1913"
-  },
-  {
-    "id": 8,
-    "brand": "Opel",
-    "model": "Rennwagen",
-    "year": "1913"
-  },
-  {
-    "id": 92,
-    "brand": "Peugeot",
-    "model": "Type 126",
-    "year": "1910"
-  },
-  {
-    "id": 140,
-    "brand": "Rolls-Royce",
-    "model": "Silver Ghost",
-    "year": "1906"
-  },
-  {
-    "id": 121,
-    "brand": "Vauxhall",
-    "model": "Prince Henry",
-    "year": "1911"
-  },
-  {
-    "id": 112,
-    "brand": "Woods",
-    "model": "Dual Power",
-    "year": "1917"
-  },
-  {
-    "id": 64,
-    "brand": "Lancia",
-    "model": "Tipo 55 Corsa",
-    "year": "1908"
-  },
-  {
-    "id": 7,
-    "brand": "Morris",
-    "model": "Oxford",
-    "year": "1913"
-  },
-  {
-    "id": 8,
-    "brand": "Opel",
-    "model": "Rennwagen",
-    "year": "1913"
-  },
-  {
-    "id": 92,
-    "brand": "Peugeot",
-    "model": "Type 126",
-    "year": "1910"
-  },
-  {
-    "id": 140,
-    "brand": "Rolls-Royce",
-    "model": "Silver Ghost",
-    "year": "1906"
-  },
-  {
-    "id": 121,
-    "brand": "Vauxhall",
-    "model": "Prince Henry",
-    "year": "1911"
-  },
-  {
-    "id": 112,
-    "brand": "Woods",
-    "model": "Dual Power",
-    "year": "1917"
-  },
-  {
-    "id": 64,
-    "brand": "Lancia",
-    "model": "Tipo 55 Corsa",
-    "year": "1908"
-  },
-  {
-    "id": 7,
-    "brand": "Morris",
-    "model": "Oxford",
-    "year": "1913"
-  },
-  {
-    "id": 8,
-    "brand": "Opel",
-    "model": "Rennwagen",
-    "year": "1913"
-  },
-  {
-    "id": 92,
-    "brand": "Peugeot",
-    "model": "Type 126",
-    "year": "1910"
-  },
-  {
-    "id": 140,
-    "brand": "Rolls-Royce",
-    "model": "Silver Ghost",
-    "year": "1906"
-  },
-  {
-    "id": 121,
-    "brand": "Vauxhall",
-    "model": "Prince Henry",
-    "year": "1911"
-  },
-  {
-    "id": 112,
-    "brand": "Woods",
-    "model": "Dual Power",
-    "year": "1917"
-  },
-  {
-    "id": 64,
-    "brand": "Lancia",
-    "model": "Tipo 55 Corsa",
-    "year": "1908"
-  },
-  {
-    "id": 7,
-    "brand": "Morris",
-    "model": "Oxford",
-    "year": "1913"
-  },
-  {
-    "id": 8,
-    "brand": "Opel",
-    "model": "Rennwagen",
-    "year": "1913"
-  },
-  {
-    "id": 92,
-    "brand": "Peugeot",
-    "model": "Type 126",
-    "year": "1910"
-  },
-  {
-    "id": 140,
-    "brand": "Rolls-Royce",
-    "model": "Silver Ghost",
-    "year": "1906"
-  },
-  {
-    "id": 121,
-    "brand": "Vauxhall",
-    "model": "Prince Henry",
-    "year": "1911"
-  },
-  {
-    "id": 112,
+    "id": "112",
     "brand": "Woods",
     "model": "Dual Power",
     "year": "1917"
