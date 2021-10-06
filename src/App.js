@@ -1,10 +1,11 @@
 import { useState } from "react";
 import uuid from "react-uuid";
 import "./App.scss";
-import { IoCarSportSharp } from "react-icons/io5";
-import { BsSearch, BsInputCursorText } from "react-icons/bs";
 
 import DBJSON from "./db.json";
+import Header from "./components/Header/Header";
+import Table from "./components/Table/Table";
+import Form from "./components/Form/Form";
 
 function App() {
   const [openEditSection, setOpenEditSection] = useState(false);
@@ -23,7 +24,7 @@ function App() {
 
   const toggleEditSection = (e) => {
     const buttonAssignment = e.target.textContent.toLowerCase();
-    console.log(buttonAssignment);
+
     if (buttonAssignment === "add new") {
       setOpenEditSection(true);
       setIsEdit(false);
@@ -98,7 +99,6 @@ function App() {
 
   // IMPROVE:
   const sortByBrand = () => {
-    console.log("sortByBrand");
     let array;
     if (desc) {
       setDesc(!desc);
@@ -147,132 +147,36 @@ function App() {
 
   return (
     <div className="App">
-      <header>
-        <section>
-          <div className="searchWrapper">
-            <input
-              type="text"
-              placeholder="Search car..."
-              onChange={(e) => {
-                setSearchTerm(e.target.value);
-              }}
-            />
-            <BsSearch />
-          </div>
-          <h1>
-            <IoCarSportSharp />
-            Cars
-          </h1>
-          <button onClick={(e) => toggleEditSection(e)}>
-            {!openEditSection ? "Add new" : "Back"}
-          </button>
-        </section>
-      </header>
+      <Header
+        openEditSection={openEditSection}
+        toggleEditSection={toggleEditSection}
+        setSearchTerm={setSearchTerm}
+      />
       <main>
         {openEditSection ? (
-          <section className="formWrapper">
-            <h3>{isEdit ? "Edit" : "Add"} new car</h3>
-            <form onSubmit={handleSubmit}>
-              <label>
-                Brand
-                <input
-                  type="text"
-                  placeholder="brand"
-                  value={brand}
-                  onChange={handleOnChangeBrand}
-                />
-              </label>
-              <label>
-                Model
-                <input
-                  type="text"
-                  placeholder="model"
-                  value={model}
-                  onChange={handleOnChangeModel}
-                />
-              </label>
-              <label>
-                Year
-                <input
-                  type="number"
-                  placeholder="year"
-                  value={year}
-                  onChange={handleOnChangeYear}
-                />
-              </label>
-              {isEdit ? (
-                <button type="button" onClick={editCar}>
-                  Change
-                </button>
-              ) : (
-                <button type="submit">Add</button>
-              )}
-              <button type="button" onClick={clearInputs}>
-                Clear
-              </button>
-              <button type="button" onClick={(e) => toggleEditSection(e)}>
-                Back
-              </button>
-            </form>
-          </section>
+          <Form
+            year={year}
+            model={model}
+            brand={brand}
+            isEdit={isEdit}
+            handleOnChangeModel={handleOnChangeModel}
+            handleOnChangeBrand={handleOnChangeBrand}
+            handleSubmit={handleSubmit}
+            clearInputs={clearInputs}
+            editCar={editCar}
+            toggleEditSection={toggleEditSection}
+            handleOnChangeYear={handleOnChangeYear}
+          />
         ) : null}
-        <section className="tableWrapper">
-          <table>
-            <thead>
-              <tr>
-                <th>No.</th>
-                <th>
-                  Brand
-                  <span onClick={sortByBrand}>
-                    <BsInputCursorText />
-                  </span>
-                </th>
-                <th>
-                  Model
-                  <span onClick={sortByModel}>
-                    <BsInputCursorText />
-                  </span>
-                </th>
-                <th>
-                  Year
-                  <span onClick={sortByYear}>
-                    <BsInputCursorText />
-                  </span>
-                </th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {cars
-                .filter((car) => {
-                  if (searchTerm === "") {
-                    return car;
-                  } else if (
-                    car.brand
-                      .toLocaleLowerCase()
-                      .includes(searchTerm.toLocaleLowerCase())
-                  ) {
-                    return car;
-                  }
-                })
-                .map((car, index) => (
-                  <tr key={index} id={car.id}>
-                    <th>{index + 1}</th>
-                    <td>{car.brand}</td>
-                    <td>{car.model}</td>
-                    <td>{car.year}</td>
-                    <td>
-                      <span>
-                        <button onClick={handleCarEdit}>EDIT</button>
-                        <button onClick={deleteCar}>DELETE</button>
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-            </tbody>
-          </table>
-          {cars.length === 0 ? <h3>List is empty... Add some cars</h3> : null}
-        </section>
+        <Table
+          sortByBrand={sortByBrand}
+          sortByModel={sortByModel}
+          sortByYear={sortByYear}
+          cars={cars}
+          searchTerm={searchTerm}
+          handleCarEdit={handleCarEdit}
+          deleteCar={deleteCar}
+        />
       </main>
     </div>
   );
