@@ -44,6 +44,7 @@ header {
     }
 
     button {
+      width: 100px;
       position: absolute;
       right: 30px;
       padding: 10px;
@@ -102,7 +103,9 @@ header {
       cursor: pointer;
       transition: all 0.4s ease;
       margin: 0 10px;
+      width: 80px;
       margin-bottom: 16px;
+      background-color: #126e82;
 
       &:first-of-type {
         background-color: green;
@@ -112,6 +115,7 @@ header {
       }
 
       &:hover {
+        background-color: #51c4d3;
         &:first-of-type {
           background-color: rgb(8, 99, 8);
         }
