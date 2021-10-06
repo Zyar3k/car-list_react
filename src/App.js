@@ -1,32 +1,41 @@
-import "./App.css";
+import { useState } from "react";
+import "./App.scss";
 
 function App() {
+  const [isEditable, setIsEditable] = useState(false);
   return (
     <div className="App">
       <header>
-        <h1>Cars</h1>
-        <button>Add new</button>
+        <section>
+          <h1>Cars</h1>
+          <button onClick={() => setIsEditable(!isEditable)}>
+            {!isEditable ? "Add new" : "Back"}
+          </button>
+        </section>
       </header>
       <main>
-        <section>
-          <form>
-            <label>
-              Brand
-              <input type="text" />
-            </label>
-            <label>
-              Model
-              <input type="text" />
-            </label>
-            <label>
-              Year
-              <input type="number" />
-            </label>
-            <button>Add</button>
-            <button>Back</button>
-          </form>
-        </section>
-        <section>
+        {isEditable ? (
+          <section className="formWrapper">
+            <h3>Add new car</h3>
+            <form>
+              <label>
+                Brand
+                <input type="text" />
+              </label>
+              <label>
+                Model
+                <input type="text" />
+              </label>
+              <label>
+                Year
+                <input type="number" />
+              </label>
+              <button>Add</button>
+              <button onClick={() => setIsEditable(!isEditable)}>Back</button>
+            </form>
+          </section>
+        ) : null}
+        <section className="tableWrapper">
           <table>
             <thead>
               <tr>
@@ -39,19 +48,19 @@ function App() {
             </thead>
             <tbody>
               <tr>
-                <td>1</td>
+                <th>1</th>
                 <td>Subaru</td>
                 <td>Impreza</td>
                 <td>1990</td>
                 <td>
                   <span>
-                    <button>EDIT</button>
+                    <button onClick={() => setIsEditable(true)}>EDIT</button>
                     <button>DELETE</button>
                   </span>
                 </td>
               </tr>
               <tr>
-                <td>2</td>
+                <th>2</th>
                 <td>Mitsubishi</td>
                 <td>Lancer</td>
                 <td>1980</td>
@@ -63,7 +72,7 @@ function App() {
                 </td>
               </tr>
               <tr>
-                <td>3</td>
+                <th>3</th>
                 <td>Audi</td>
                 <td>80</td>
                 <td>2000</td>
