@@ -129,7 +129,12 @@ header {
 
 .tableWrapper {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+
+  h3 {
+    text-align: center;
+  }
 
   table {
     border: 1px solid green;

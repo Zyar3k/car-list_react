@@ -11,6 +11,7 @@ function App() {
   const [brand, setBrand] = useState("");
   const [model, setModel] = useState("");
   const [year, setYear] = useState("");
+  const [id, setId] = useState("");
   const [isEdit, setIsEdit] = useState(false);
 
   const handleOnChangeBrand = (event) => setBrand(event.target.value);
@@ -19,6 +20,7 @@ function App() {
 
   const toggleEditSection = (e) => {
     const buttonAssignment = e.target.textContent.toLowerCase();
+    console.log(buttonAssignment);
     if (buttonAssignment === "add new") {
       setOpenEditSection(true);
       setIsEdit(false);
@@ -39,8 +41,33 @@ function App() {
     setCars(array);
   };
 
-  const editCar = (e) => {
+  const handleCarEdit = (e) => {
     toggleEditSection(e);
+    const carEditId = e.target.parentNode.parentNode.parentNode.id;
+
+    const carToEdit = cars.filter((item) => item.id === carEditId);
+    setBrand(carToEdit[0].brand);
+    setModel(carToEdit[0].model);
+    setYear(carToEdit[0].year);
+    setId(carToEdit[0].id);
+  };
+
+  const editCar = () => {
+    let car = cars.filter((item) => item.id === id);
+
+    const editCar = {
+      brand: brand,
+      model: model,
+      year: year,
+      id: id,
+    };
+    car = editCar;
+
+    let array = cars.filter((item) => item.id !== id);
+    clearInputs();
+    setOpenEditSection(false);
+    setIsEdit(false);
+    setCars([...array, car]);
   };
 
   const clearInputs = () => {
@@ -115,7 +142,13 @@ function App() {
                   onChange={handleOnChangeYear}
                 />
               </label>
-              <button type="submit">{isEdit ? "Edit" : "Add"}</button>
+              {isEdit ? (
+                <button type="button" onClick={editCar}>
+                  Change
+                </button>
+              ) : (
+                <button type="submit">Add</button>
+              )}
               <button type="button" onClick={clearInputs}>
                 Clear
               </button>
@@ -157,7 +190,7 @@ function App() {
                     <td>{car.year}</td>
                     <td>
                       <span>
-                        <button onClick={editCar}>EDIT</button>
+                        <button onClick={handleCarEdit}>EDIT</button>
                         <button onClick={deleteCar}>DELETE</button>
                       </span>
                     </td>
@@ -165,6 +198,7 @@ function App() {
                 ))}
             </tbody>
           </table>
+          {cars.length === 0 ? <h3>List is empty... Add some cars</h3> : null}
         </section>
       </main>
     </div>
