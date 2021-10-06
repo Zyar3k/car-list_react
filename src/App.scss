@@ -14,6 +14,8 @@ header {
   color: #d8e3e7;
   width: 100vw;
   height: 60px;
+  position: sticky;
+  top: 0;
 
   section {
     display: flex;
@@ -24,6 +26,17 @@ header {
     margin: 0 auto;
     max-width: 1260px;
     padding: 10px;
+
+    input {
+      position: absolute;
+      left: 30px;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      background-color: #d8e3e7;
+    }
+
     h1 {
       margin: 0;
       text-transform: uppercase;
@@ -122,6 +135,8 @@ header {
     thead {
       color: #d8e3e7;
       background-color: #126e82;
+      position: sticky;
+      top: 59px;
     }
 
     td,

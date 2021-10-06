@@ -1,12 +1,24 @@
 import { useState } from "react";
 import "./App.scss";
 
+import DBJSON from "./db.json";
+
 function App() {
   const [isEditable, setIsEditable] = useState(false);
+  const [cars, setCars] = useState(DBJSON);
+  const [searchTerm, setSearchTerm] = useState("");
+
   return (
     <div className="App">
       <header>
         <section>
+          <input
+            type="text"
+            placeholder="search"
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+            }}
+          />
           <h1>Cars</h1>
           <button onClick={() => setIsEditable(!isEditable)}>
             {!isEditable ? "Add new" : "Back"}
@@ -47,42 +59,34 @@ function App() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th>1</th>
-                <td>Subaru</td>
-                <td>Impreza</td>
-                <td>1990</td>
-                <td>
-                  <span>
-                    <button onClick={() => setIsEditable(true)}>EDIT</button>
-                    <button>DELETE</button>
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <th>2</th>
-                <td>Mitsubishi</td>
-                <td>Lancer</td>
-                <td>1980</td>
-                <td>
-                  <span>
-                    <button>EDIT</button>
-                    <button>DELETE</button>
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <th>3</th>
-                <td>Audi</td>
-                <td>80</td>
-                <td>2000</td>
-                <td>
-                  <span>
-                    <button>EDIT</button>
-                    <button>DELETE</button>
-                  </span>
-                </td>
-              </tr>
+              {cars
+                .filter((car) => {
+                  if (searchTerm === "") {
+                    return car;
+                  } else if (
+                    car.brand
+                      .toLocaleLowerCase()
+                      .includes(searchTerm.toLocaleLowerCase())
+                  ) {
+                    return car;
+                  }
+                })
+                .map((car, index) => (
+                  <tr key={index}>
+                    <th>{index + 1}</th>
+                    <td>{car.brand}</td>
+                    <td>{car.model}</td>
+                    <td>{car.year}</td>
+                    <td>
+                      <span>
+                        <button onClick={() => setIsEditable(true)}>
+                          EDIT
+                        </button>
+                        <button>DELETE</button>
+                      </span>
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </section>
