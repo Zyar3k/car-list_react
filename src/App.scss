@@ -27,20 +27,40 @@ header {
     max-width: 1260px;
     padding: 10px;
 
-    input {
+    .searchWrapper {
       position: absolute;
       left: 30px;
-      padding: 10px;
-      border: none;
-      border-radius: 6px;
-      font-weight: bold;
-      background-color: #d8e3e7;
+      display: flex;
+      align-items: center;
+
+      input {
+        margin-right: 6px;
+        padding: 10px;
+        border: none;
+        border-radius: 6px;
+        font-weight: bold;
+        background-color: #d8e3e7;
+      }
+      svg {
+        height: 24px;
+        width: 24px;
+      }
     }
 
     h1 {
       margin: 0;
       text-transform: uppercase;
       font-weight: 900;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        margin-right: 10px;
+        height: 32px;
+        width: 32px;
+      }
     }
 
     button {
@@ -146,6 +166,17 @@ header {
       background-color: #126e82;
       position: sticky;
       top: 59px;
+
+      th {
+        svg {
+          margin-left: 16px;
+          cursor: pointer;
+
+          &:hover {
+            color: #132c33;
+          }
+        }
+      }
     }
 
     td,

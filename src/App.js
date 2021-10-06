@@ -1,6 +1,8 @@
 import { useState } from "react";
 import uuid from "react-uuid";
 import "./App.scss";
+import { IoCarSportSharp } from "react-icons/io5";
+import { BsSearch, BsInputCursorText } from "react-icons/bs";
 
 import DBJSON from "./db.json";
 
@@ -13,6 +15,7 @@ function App() {
   const [year, setYear] = useState("");
   const [id, setId] = useState("");
   const [isEdit, setIsEdit] = useState(false);
+  const [desc, setDesc] = useState(false);
 
   const handleOnChangeBrand = (event) => setBrand(event.target.value);
   const handleOnChangeModel = (event) => setModel(event.target.value);
@@ -93,18 +96,73 @@ function App() {
     setCars(data);
   };
 
+  // IMPROVE:
+  const sortByBrand = () => {
+    console.log("sortByBrand");
+    let array;
+    if (desc) {
+      setDesc(!desc);
+      array = [].concat(cars).sort((a, b) => (a.brand > b.brand ? 1 : -1));
+    } else {
+      setDesc(!desc);
+      array = []
+        .concat(cars)
+        .sort((a, b) => (a.brand > b.brand ? 1 : -1))
+        .reverse();
+    }
+    return setCars(array);
+  };
+  // IMPROVE:
+  const sortByModel = () => {
+    let array;
+
+    if (desc) {
+      setDesc(!desc);
+      array = [].concat(cars).sort((a, b) => (a.model > b.model ? 1 : -1));
+    } else {
+      setDesc(!desc);
+      array = []
+        .concat(cars)
+        .sort((a, b) => (a.model > b.model ? 1 : -1))
+        .reverse();
+    }
+    return setCars(array);
+  };
+  // IMPROVE:
+  const sortByYear = () => {
+    let array;
+
+    if (desc) {
+      setDesc(!desc);
+      array = [].concat(cars).sort((a, b) => (a.year > b.year ? 1 : -1));
+    } else {
+      setDesc(!desc);
+      array = []
+        .concat(cars)
+        .sort((a, b) => (a.year > b.year ? 1 : -1))
+        .reverse();
+    }
+    return setCars(array);
+  };
+
   return (
     <div className="App">
       <header>
         <section>
-          <input
-            type="text"
-            placeholder="Search car..."
-            onChange={(e) => {
-              setSearchTerm(e.target.value);
-            }}
-          />
-          <h1>Cars</h1>
+          <div className="searchWrapper">
+            <input
+              type="text"
+              placeholder="Search car..."
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+              }}
+            />
+            <BsSearch />
+          </div>
+          <h1>
+            <IoCarSportSharp />
+            Cars
+          </h1>
           <button onClick={(e) => toggleEditSection(e)}>
             {!openEditSection ? "Add new" : "Back"}
           </button>
@@ -163,9 +221,24 @@ function App() {
             <thead>
               <tr>
                 <th>No.</th>
-                <th>Brand</th>
-                <th>Model</th>
-                <th>Year</th>
+                <th>
+                  Brand
+                  <span onClick={sortByBrand}>
+                    <BsInputCursorText />
+                  </span>
+                </th>
+                <th>
+                  Model
+                  <span onClick={sortByModel}>
+                    <BsInputCursorText />
+                  </span>
+                </th>
+                <th>
+                  Year
+                  <span onClick={sortByYear}>
+                    <BsInputCursorText />
+                  </span>
+                </th>
                 <th></th>
               </tr>
             </thead>
