@@ -1,14 +1,21 @@
-import { BsInputCursorText } from "react-icons/bs";
+import { useContext } from "react";
 
-const Table = ({
-  sortByBrand,
-  sortByModel,
-  sortByYear,
-  cars,
-  searchTerm,
-  handleCarEdit,
-  deleteCar,
-}) => {
+import { BsInputCursorText } from "react-icons/bs";
+import TableItem from "./TableItem/TableItem";
+
+import { StoreContext } from "../../store/StoreProvider";
+
+const Table = () => {
+  const {
+    cars,
+    deleteCar,
+    searchTerm,
+    sortByBrand,
+    sortByModel,
+    sortByYear,
+    handleCarEdit,
+  } = useContext(StoreContext);
+
   return (
     <section className="tableWrapper">
       <table>
@@ -51,18 +58,13 @@ const Table = ({
             })
 
             .map((car, index) => (
-              <tr key={index} id={car.id}>
-                <th>{index + 1}</th>
-                <td>{car.brand}</td>
-                <td>{car.model}</td>
-                <td>{car.year}</td>
-                <td>
-                  <span>
-                    <button onClick={handleCarEdit}>EDIT</button>
-                    <button onClick={deleteCar}>DELETE</button>
-                  </span>
-                </td>
-              </tr>
+              <TableItem
+                key={index}
+                deleteCar={deleteCar}
+                index={index}
+                car={car}
+                handleCarEdit={handleCarEdit}
+              />
             ))}
         </tbody>
       </table>

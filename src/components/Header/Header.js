@@ -1,7 +1,13 @@
+import { useContext } from "react";
+
 import { IoCarSportSharp } from "react-icons/io5";
 import { BsSearch } from "react-icons/bs";
 
-const Header = ({ setSearchTerm, toggleEditSection, openEditSection }) => {
+import { StoreContext } from "../../store/StoreProvider";
+
+const Header = () => {
+  const { setSearchTerm, toggleEditSection, openEditSection } =
+    useContext(StoreContext);
   return (
     <header>
       <section>

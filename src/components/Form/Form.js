@@ -1,21 +1,25 @@
-import React from "react";
+import { useContext } from "react";
 
-const Form = ({
-  editCar,
-  clearInputs,
-  toggleEditSection,
-  brand,
-  model,
-  year,
-  isEdit,
-  handleSubmit,
-  handleOnChangeModel,
-  handleOnChangeBrand,
-  handleOnChangeYear,
-}) => {
+import { StoreContext } from "../../store/StoreProvider";
+
+const Form = () => {
+  const {
+    brand,
+    model,
+    year,
+    isEdit,
+    clearInputs,
+    editCar,
+    toggleEditSection,
+    handleSubmit,
+    handleOnChangeModel,
+    handleOnChangeBrand,
+    handleOnChangeYear,
+  } = useContext(StoreContext);
   return (
     <section className="formWrapper">
       <h3>{isEdit ? "Edit" : "Add"} new car</h3>
+
       <form onSubmit={handleSubmit}>
         <label>
           Brand
